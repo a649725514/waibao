@@ -2,8 +2,12 @@
   "name": "waibao1",
   "version": "0.1.0",
   "private": true,
+  "main": "main.js",
+  "homepage":".",
   "dependencies": {
     "antd": "^3.2.3",
+    "electron": "^1.8.3",
+    "electron-packager": "^11.1.0",
     "react": "^16.2.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.2.0",
@@ -14,6 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-start": "electron .",
+    "package": "electron-packager ."
+
   }
 }

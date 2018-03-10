@@ -70,7 +70,7 @@ export default class Workexp extends Component{
               }}>
                 <Steps direction="vertical" current={0}>
                     <Step title="服务虹软公司" description="2017-12-25" />
-                    <Step title="服务公司O" description="2017-04-01" />
+                    <Step title="服务公司OW" description="2017-04-01" />
                     <Step title="服务公司U" description="2016-09-01" />
                 </Steps>
               </div>

@@ -1,9 +1,9 @@
 {
-  "name": "waibao1",
+  "name": "waibao",
   "version": "0.1.0",
   "private": true,
-  "main": "main.js",
   "homepage": "./",
+  "main": "main.js",
   "dependencies": {
     "antd": "^3.2.3",
     "electron": "^1.8.3",
@@ -20,7 +20,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron-start": "electron .",
-    "package": "electron-packager ./ waibao -all"
+    "package": "electron-packager ./build waibao -all"
 
   }
 }

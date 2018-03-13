@@ -15,6 +15,7 @@ import Otherprojects from './otherprojects';
 import Othermessage from './othermessage';
 import Othertasks from './othertasks';
 import Employermessage from './employermessage';
+import Error from './e404';
 // Some folks find value in a centralized route config.
 // A route config is just data. React is great at mapping
 // data into components, and <Route> is a component.
@@ -98,6 +99,10 @@ const routes = [
   {
     path:"/employermessage",
     component: Employermessage,
+  },
+  {
+    path:"/error",
+    component: Error,
   },
   {
     path: "/sandwiches",

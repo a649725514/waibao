@@ -1,5 +1,4 @@
 import React , {Component} from 'react';
-import page from '../icon/page.svg';
 import phone from '../icon/phone.svg';
 import envelope from '../icon/envelope.svg';
 export default class Selfmeaasge extends Component{
@@ -7,7 +6,9 @@ export default class Selfmeaasge extends Component{
         name:'张三',
         company:'A外包公司',
         skills:'JavaScript,CSS,html5',
-        src:require('../pic/01.png')
+        src:require('../pic/01.png'),
+        src1:null,
+        src2:null
     };
     constructor(props){
 		super(props);
@@ -32,12 +33,33 @@ export default class Selfmeaasge extends Component{
                     width:this.state.width*0.85,
                     height:this.state.height*0.05,
                     flexDirection:'row',
-                    justifyContent:'flex-end',
-                    alignItems:'flex-end',
+                    justifyContent:'center',
+                    alignItems:'center',
                 }}>
-                    <img style={{
-                        marginRight:20
-                    }} src={page}></img>
+                    <div style={{
+                        display:'flex',
+                        width:this.state.width*0.85/2,
+                        height:this.state.height*0.05,
+                        flexDirection:'row',
+                        justifyContent:'flex-start',
+                        alignItems:'flex-end',
+                    }}>
+                        <img style={{
+                            marginLeft:20
+                        }} src={this.props.src1}></img>
+                    </div>
+                    <div style={{
+                        display:'flex',
+                        width:this.state.width*0.85/2,
+                        height:this.state.height*0.05,
+                        flexDirection:'row',
+                        justifyContent:'flex-end',
+                        alignItems:'flex-end',
+                    }}>
+                        <img style={{
+                            marginRight:20
+                        }} src={this.props.src2}></img>
+                    </div>
                 </div>
                 <div style={{
                     display:'flex',

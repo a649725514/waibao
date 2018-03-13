@@ -5,7 +5,7 @@ import phone from '../icon/phone-b.svg';
 import email from '../icon/envelope-b.svg';
 //import history from 'history/createBrowserHistory' 
 const Step = Steps.Step;
-export default class Taskcard extends Component{
+export default class Taskcard2 extends Component{
     static defaultProps={
         taskname:'任务a',
         date:'2017-12-30',
@@ -127,7 +127,6 @@ export default class Taskcard extends Component{
                     justifyContent:'flex-end',
                     alignItems:'center',
                 }}>
-                    <Button style={{marginRight:this.state.width*0.05}} size='large' type='primary'>开始工作</Button>
                 </div>
               </div>
               <div style={{

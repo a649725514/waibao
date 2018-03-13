@@ -1,9 +1,8 @@
 import React , {Component} from 'react';
-import { Progress } from 'antd';
-import 'antd/dist/antd.css';
-export default class Workskill extends Component{
+export default class Notice extends Component{
     static defaultProps={
-        src:null,
+        title:'公告',
+        tips:'more'
     };
     constructor(props){
 		super(props);
@@ -17,7 +16,7 @@ export default class Workskill extends Component{
             <div style={{
                 display:'flex',
                 width:this.state.width*0.85,
-                //height:this.state.height*0.2,
+                height:this.state.height*0.2,
                 flexDirection:'column',
                 justifyContent:'center',
                 alignItems:'center',
@@ -38,7 +37,7 @@ export default class Workskill extends Component{
                     justifyContent:'flex-start',
                     alignItems:'center',
                 }}>
-                    <h style={{marginLeft:20}}>技能</h>
+                    <h style={{marginLeft:20}}>{this.props.title}</h>
                 </div>
                 <div style={{
                     display:'flex',
@@ -48,7 +47,7 @@ export default class Workskill extends Component{
                     justifyContent:'flex-end',
                     alignItems:'center',
                 }}>
-                    <img style={{marginRight:20}} src={this.props.src}></img>
+                    <h style={{marginRight:20,color:'#63B8FF'}}>{this.props.tips}</h>
                 </div>
               </div>
               <div style={{
@@ -60,37 +59,13 @@ export default class Workskill extends Component{
               <div style={{
                   display:'flex',
                   width:this.state.width*0.85,
-                  //height:this.state.height*0.15,
+                  height:this.state.height*0.15,
                   flexDirection:'column',
                   justifyContent:'flex-start',
                   alignItems:'flex-start',
-                  margin:20,
-                  marginLeft:60
               }}>
-                <h>{"PPT"}</h>
-                <div style={{
-                    width:this.state.width*0.85-100
-                }}>
-                    <Progress percent={80} status="active" />
-                </div>
-                <h>{"墨刀"}</h>
-                <div style={{
-                    width:this.state.width*0.85-100
-                }}>
-                    <Progress percent={50} status="active" />
-                </div>
-                <h>{"Visio"}</h>
-                <div style={{
-                    width:this.state.width*0.85-100
-                }}>
-                    <Progress percent={55} status="active" />
-                </div>
-                <h>{"MindManage"}</h>
-                <div style={{
-                    width:this.state.width*0.85-100
-                }}>
-                    <Progress percent={40} status="active" />
-                </div>
+                <texrarea style={{marginLeft:20,fontSize:12,marginTop:20}}>{'如果你无法简洁的表达你的想法，那只说明你还不够了解它。'}</texrarea>
+                <texrarea style={{marginLeft:20,fontSize:12}}>{' --阿尔伯特·爱因斯坦'}</texrarea>
               </div>
               
             </div>

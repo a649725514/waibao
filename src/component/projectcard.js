@@ -5,14 +5,13 @@ import phone from '../icon/phone-b.svg';
 import email from '../icon/envelope-b.svg';
 //import history from 'history/createBrowserHistory' 
 const Step = Steps.Step;
-export default class Taskcard extends Component{
+export default class Projectcard extends Component{
     static defaultProps={
-        taskname:'任务a',
+        taskname:'项目B',
         date:'2017-12-30',
-        project:'B项目',
+        mounth:5,
         stars:2,
         counts:8,
-        time:6,
         date0:'2017-12-15',
         date1:'2018-12-25',
         date2:'',
@@ -113,10 +112,9 @@ export default class Taskcard extends Component{
                     alignItems:'center',
                 }}>
                     <Breadcrumb>
-                        <Breadcrumb.Item style={{marginLeft:20,color:'black'}}>{'截止于'+this.props.date}</Breadcrumb.Item>
-                        <Breadcrumb.Item>{this.props.project}</Breadcrumb.Item>
+                        <Breadcrumb.Item style={{marginLeft:20,color:'black'}}>{'发布于'+this.props.date}</Breadcrumb.Item>
+                        <Breadcrumb.Item>{'周期'+this.props.mounth+'个月'}</Breadcrumb.Item>
                         <Breadcrumb.Item><a href="">{this.props.counts+'人参与'}</a></Breadcrumb.Item>
-                        <Breadcrumb.Item>{this.props.time+'工作量'}</Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                 <div style={{
@@ -127,7 +125,6 @@ export default class Taskcard extends Component{
                     justifyContent:'flex-end',
                     alignItems:'center',
                 }}>
-                    <Button style={{marginRight:this.state.width*0.05}} size='large' type='primary'>开始工作</Button>
                 </div>
               </div>
               <div style={{
@@ -144,6 +141,19 @@ export default class Taskcard extends Component{
                     <Step title="待审核" description={this.props.date2} />
                     <Step title="已完成" description={this.props.date3}/>
                 </Steps>
+              </div>
+              <div style={{
+                  display:'flex',
+                  width:this.state.width*0.85,
+                  height:this.state.height*0.15,
+                  flexDirection:'row',
+                  justifyContent:'flex-start',
+                  alignItems:'center',
+              }}>
+                <h style={{fontSize:20,marginLeft:this.state.width*0.025}}>技能方向</h>
+                <Button style={{marginLeft:this.state.width*0.025}} >JAVA</Button>
+                <Button style={{marginLeft:this.state.width*0.025}} >PHP</Button>
+                <Button style={{marginLeft:this.state.width*0.025}} >PS</Button>
               </div>
               <div style={{
                   display:'flex',

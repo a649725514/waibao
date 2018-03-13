@@ -1,5 +1,6 @@
 import React , {Component} from 'react';
 import  { Rate } from 'antd';
+import { Link } from "react-router-dom";
 export default class Task extends Component{
     static defaultProps={
         task:"任务a",
@@ -7,7 +8,8 @@ export default class Task extends Component{
         project:"项目B",
         time:'8',
         stars:2,
-        date:'2018.3.1-2018.4.1'
+        date:'2018.3.1-2018.4.1',
+        renwu:'/tasks'
     };
     constructor(props){
 		super(props);
@@ -18,6 +20,7 @@ export default class Task extends Component{
     }
     render(){
         return (
+          <Link to={this.props.renwu}>
             <div style={{
                 display:'flex',
                 width:this.state.width*0.8,
@@ -44,7 +47,7 @@ export default class Task extends Component{
                     alignItems:'flex-start',
                     //backgroundColor:'yellow',
                   }}>
-                    <h style={{fontSize:15,marginLeft:10}}>{this.props.task}</h>
+                    <h style={{fontSize:15,marginLeft:10,color:'black'}}>{this.props.task}</h>
                   </div>
                   <div style={{
                     display:'flex',
@@ -75,7 +78,7 @@ export default class Task extends Component{
                     alignItems:'flex-start',
                     //backgroundColor:'yellow',
                   }}>
-                    <h style={{marginLeft:10}}>发布者：{this.props.uploader}</h>
+                    <h style={{marginLeft:10,color:'black'}}>发布者：{this.props.uploader}</h>
                   </div>
                   <div style={{
                     display:'flex',
@@ -86,7 +89,7 @@ export default class Task extends Component{
                     alignItems:'flex-start',
                     marginRight:30
                   }}>
-                    <h>所属项目：{this.props.project}</h>
+                    <h style={{color:'black'}}>所属项目：{this.props.project}</h>
                   </div>
                 </div>
                 <div style={{
@@ -106,7 +109,7 @@ export default class Task extends Component{
                     alignItems:'flex-start',
                     //backgroundColor:'yellow',
                   }}>
-                    <h style={{marginLeft:10}}>工作量：{this.props.time}</h>
+                    <h style={{marginLeft:10,color:'black'}}>工作量：{this.props.time}</h>
                   </div>
                   <div style={{
                     display:'flex',
@@ -117,10 +120,11 @@ export default class Task extends Component{
                     alignItems:'flex-end',
                     marginRight:30
                   }}>
-                    <h>{this.props.date}</h>
+                    <h style={{color:'black'}}>{this.props.date}</h>
                   </div>
                 </div>
               </div>
+            </Link>
         );
     }
 }

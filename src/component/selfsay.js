@@ -1,8 +1,8 @@
 import React , {Component} from 'react';
-import pencil from '../icon/pencil.svg';
 export default class Selfsay extends Component{
     static defaultProps={
-
+        title:'个人介绍',
+        icon: null
     };
     constructor(props){
 		super(props);
@@ -37,7 +37,7 @@ export default class Selfsay extends Component{
                     justifyContent:'flex-start',
                     alignItems:'center',
                 }}>
-                    <h style={{marginLeft:20}}>个人介绍</h>
+                    <h style={{marginLeft:20}}>{this.props.title}</h>
                 </div>
                 <div style={{
                     display:'flex',
@@ -47,7 +47,7 @@ export default class Selfsay extends Component{
                     justifyContent:'flex-end',
                     alignItems:'center',
                 }}>
-                    <img style={{marginRight:20}} src={pencil}></img>
+                    <img style={{marginRight:20}} src={this.props.icon}></img>
                 </div>
               </div>
               <div style={{

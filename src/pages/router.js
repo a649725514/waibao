@@ -9,6 +9,7 @@ import Main2 from './main2';
 import Contact from './contact';
 import Contact2 from './contact2';
 import Selfmessage from './selfmessage';
+import Tasks from "../pages/tasks";
 // Some folks find value in a centralized route config.
 // A route config is just data. React is great at mapping
 // data into components, and <Route> is a component.
@@ -68,6 +69,10 @@ const routes = [
   {
     path:"/selfmessage",
     component: Selfmessage,
+  },
+  {
+    path:"/tasks",
+    component: Tasks,
   },
   {
     path: "/sandwiches",

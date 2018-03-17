@@ -3,24 +3,25 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 const StaticServer = require('static-server');
+const ipc = require('electron').ipcMain
 
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 let mainWindow
-var server = new StaticServer({
-  rootPath: path.join(__dirname,'build'),                // required, the root of the server file tree
-  port: 3000,               // required, the port to listen
-  name: 'my-http-server',   // optional, will set "X-Powered-by" HTTP header
-  host: 'localhost',       // optional, defaults to any interface
-  cors: '*',                // optional, defaults to undefined
-  followSymlink: true,      // optional, defaults to a 404 error
-});
+// var server = new StaticServer({
+//   rootPath: path.join(__dirname,'build'),                // required, the root of the server file tree
+//   port: 3000,               // required, the port to listen
+//   name: 'my-http-server',   // optional, will set "X-Powered-by" HTTP header
+//   host: 'localhost',       // optional, defaults to any interface
+//   cors: '*',                // optional, defaults to undefined
+//   followSymlink: true,      // optional, defaults to a 404 error
+// });
 function createWindow () {
   //创建浏览器窗口
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 1080, height: 720, webPreferences: {preload: path.join(__dirname, "preload.js")}})
 
   mainWindow.loadURL('http://localhost:3000/');
   // 打开开发者工具，默认不打开
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // 关闭window时触发下列事件.
   mainWindow.on('closed', function () {
@@ -28,23 +29,35 @@ function createWindow () {
   })
 }
 
+function createCameraWindows () {
+    const modalPath = path.join('file://', __dirname, 'src/windows/HTML5Camera.html')
+    let win = new BrowserWindow({ frame: false, width: 800, height: 600})
+    win.on('close', function () { win = null })
+    win.loadURL(modalPath)
+    win.show()
+}
+
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法
 app.on('ready', function () {
 
   
-  server.start(function () {
-    console.log('Server listening to', server.port);
-  });
+  // server.start(function () {
+  //   console.log('Server listening to', server.port);
+  // });
   
   createWindow();
-  
+
+})
+
+ipc.on('camera-message', function (event, arg) {
+  createCameraWindows();
 })
 
 // 所有窗口关闭时退出应用.
 app.on('window-all-closed', function () {
   // macOS中除非用户按下 `Cmd + Q` 显式退出,否则应用与菜单栏始终处于活动状态.
   if (process.platform !== 'darwin') {
-    server.stop();
+    // server.stop();
     app.quit()
   }
 })

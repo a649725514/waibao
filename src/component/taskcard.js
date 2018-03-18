@@ -3,23 +3,13 @@ import { Rate, Breadcrumb, Button, Steps } from 'antd';
 import arrowl from '../icon/arrow_left.svg';
 import phone from '../icon/phone-b.svg';
 import email from '../icon/envelope-b.svg';
+import TimeDisplay from './TimePlayer/TimeDisplay';
 //import history from 'history/createBrowserHistory' 
 const Step = Steps.Step;
 // const { ipcRenderer } = require('electron');
 const { ipcRenderer } = window.electron;
 export default class Taskcard extends Component {
-    getInitialState() {
-        return { count: 0 };
-    };
-    tick() {
-        this.setState({ count: this.state.count + 1 });
-    };
-    componentDidMount() {
-        this.interval = setInterval(this.tick, 1000);
-    };
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    };
+
     static defaultProps = {
         taskname: '任务a',
         date: '2017-12-30',
@@ -43,6 +33,10 @@ export default class Taskcard extends Component {
             width: document.body.clientWidth,
             height: document.body.clientHeight
         };
+        ipcRenderer.on('asynchronous-reply', function (event, arg) {
+            const message = `异步消息回复: ${arg}`
+            alert(message);
+          })
     }
     back(e) {
         // e.goBack();
@@ -141,8 +135,8 @@ export default class Taskcard extends Component {
                         justifyContent: 'flex-end',
                         alignItems: 'center',
                     }}>
-                        <Button style={{ marginRight: this.state.width * 0.05 }} size='large' type='primary' onClick={() => ipcRenderer.send('camera-message', 'ping')}>开始工作</Button>
-                        <i>计时器：{this.state.count}</i>
+                        {/* <Button style={{ marginRight: this.state.width * 0.05 }} size='large' type='primary' onClick={() => ipcRenderer.send('camera-message', 'ping')}>开始工作</Button> */}
+                        <TimeDisplay/>
                     </div>
                 </div>
                 <div style={{

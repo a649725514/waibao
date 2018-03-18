@@ -3,8 +3,8 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 const StaticServer = require('static-server');
-const ipc = require('electron').ipcMain
-
+const ipc = require('electron').ipcMain;
+const cronJob = require('cron').CronJob;
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 let mainWindow
 // var server = new StaticServer({
@@ -35,6 +35,7 @@ function createCameraWindows () {
     win.on('close', function () { win = null })
     win.loadURL(modalPath)
     win.show()
+    win.webContents.openDevTools();
 }
 
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法
@@ -48,10 +49,29 @@ app.on('ready', function () {
   createWindow();
 
 })
-
 ipc.on('camera-message', function (event, arg) {
   createCameraWindows();
 })
+var tevent;
+var jobid = new cronJob('*/30 * * * * *', () => { 
+  createCameraWindows();
+  this.tevent.sender.send('checking_employee_message', 'pong')
+}, null, false, 'Asia/Chongqing'); 
+
+ipc.on('finish_check_employee_message',(event, arg) => {
+  this.tevent.sender.send('checking_employee_finish_message', 'pong')
+})
+
+ipc.on('start_check_employee_message', (event, arg) => {
+  jobid.start();
+  this.tevent = event;
+});
+
+ipc.on('end_check_employee_message', (event, arg) => {
+  jobid.stop();
+  this.tevent = event;
+
+});
 
 // 所有窗口关闭时退出应用.
 app.on('window-all-closed', function () {

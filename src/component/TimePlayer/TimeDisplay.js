@@ -4,7 +4,7 @@ import {Button } from 'antd';
 const { ipcRenderer } = window.electron;
 
 export default class TimeDisplay extends Component {
-
+    
     constructor(props) {
         
         super(props);
@@ -16,7 +16,7 @@ export default class TimeDisplay extends Component {
         ipcRenderer.on("checking_employee_message",(event, arg) => {
             this.setState({on: false})
             clearInterval(this.timer);
-
+            
           });
         ipcRenderer.on("checking_employee_finish_message", (event, arg) => {
             this.setState({on: true})

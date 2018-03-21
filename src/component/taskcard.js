@@ -136,7 +136,7 @@ export default class Taskcard extends Component {
                         alignItems: 'center',
                     }}>
                         {/* <Button style={{ marginRight: this.state.width * 0.05 }} size='large' type='primary' onClick={() => ipcRenderer.send('camera-message', 'ping')}>开始工作</Button> */}
-                        <TimeDisplay/>
+                        <TimeDisplay />
                     </div>
                 </div>
                 <div style={{

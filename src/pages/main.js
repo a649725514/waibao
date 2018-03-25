@@ -6,11 +6,13 @@ import Task from '../component/task';
 import Selfdivider from '../component/divider'
 import Topbar from '../component/topbar'
 import { Link } from "react-router-dom";
+
 //import { Router, Route, IndexRoute } from 'react-router'
 //import { Redirect } from 'react-router-dom';
 //import test from './pages/test'
 
 const Search = Input.Search;
+const {ipcRenderer} = window.electron;
 //const test = './pages/test';
 class Main extends Component {
   constructor(props) {
@@ -20,8 +22,10 @@ class Main extends Component {
       width: document.body.clientWidth,
       height: document.body.clientHeight,
       tasksInfo: [],
-      current: 1
+      current: 1,
+      token:ipcRenderer.sendSync('get_mine_token','please')
     })
+    
     // setInterval(()=>{
     //   this.setState({
     //     width:document.body.clientWidth,
@@ -37,33 +41,28 @@ class Main extends Component {
   }
 
   componentWillMount() {
-    var url = 'http://120.78.74.75:8080/demo/project/getProjectByUser'; // 接口url
+    var url = 'http://120.78.74.75:8080/demo/s/getTasksOfUser'; // 接口url
     fetch(url, {
       "method": 'GET',
       "headers": {
-        "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAwMCIsImNyZWF0ZWQiOjE1MjEyNjA3ODgwNDUsImV4cCI6MTUyMTg2NTU4OH0.o1ymUahE2zbZ-F00w44kOoJQvsTntkvG5CIXG5UQnC2bHSBYFpTD_VqdFKqDLdr3GQ4vUbGXmybQgzQWNBCUyg",
+        "Authorization": "Bearer "+this.state.token,
         "Content-Type": "application/json",
       },
     }).then(
       function (res) {
         if (res.ok) {
+          // console.log(res.json());
           return res.json()
         } else {
           { this.LogError(res) }
         }
       }
-    ).then(function (PromiseValue) {
+    ).then( (PromiseValue) => {
       for (var i = 0; i < PromiseValue.length; i++) {
-        console.log(PromiseValue[i])
-        return PromiseValue[i]
+        this.setState({'tasksInfo': [...this.state.tasksInfo, PromiseValue[i]]})
       }
-    }).then((e) => {
-      console.log("props111=====" + e);
-      this.setState({  // setState 将数据塞在 state 中以便在组件间进行数据传递
-        tasksInfo: e
-      });
     });
-    this.state.tasksInfo = Array.from(new Array(20), (val, index) => index);
+    // this.state.tasksInfo = Array.from(new Array(20), (val, index) => index);
   }
   // handleOnClick = () => {  
   //   // some action...  
@@ -124,7 +123,7 @@ class Main extends Component {
         {this.state.tasksInfo.slice(this.state.current * 3 - 2, this.state.current * 3 + 1).map((taskInfo) => {
           return (
             <div>
-              <Task task={taskInfo}/>
+              <Task task={taskInfo.taskContent} uploader={taskInfo.project.user} project={taskInfo.project.projectContent} time={taskInfo.workload} stars={taskInfo.securityLv}/>
               <Selfdivider />
             </div>
           )

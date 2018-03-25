@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 export default class Task extends Component{
     static defaultProps={
         task:"任务a",
-        uploader:"发包者甲",
+        uploader: null,
         project:"项目B",
         time:'8',
         stars:2,
-        date:'2018.3.1-2018.4.1',
+        startDate:'2018.3.1',
+        endDate:'2018.4.1',
+        date0: 'a',
+        date1: 'b',
+        date2: 'c',
+        date3: 'd',
         renwu:'/tasks'
     };
     constructor(props){
@@ -20,7 +25,23 @@ export default class Task extends Component{
     }
     render(){
         return (
-          <Link to={this.props.renwu}>
+          <Link to={this.props.renwu
+             + `/${this.props.date0}`
+             + `/${this.props.date1}`
+             + `/${this.props.date2}`
+             + `/${this.props.date3}`
+             + `/${this.props.project}`
+             + `/${this.props.endDate}`
+             + `/${this.props.task}`
+             + `/${this.props.stars}`
+             + `/${this.props.time}`
+             + `/${this.props.uploader.name}`
+             + `/${this.props.uploader.offer}`
+             + `/${this.props.uploader.tel}`
+             + `/${this.props.uploader.email}`
+             + `/..\\/pic\\/02.png`
+            }
+                >
             <div style={{
                 display:'flex',
                 width:this.state.width*0.8,
@@ -78,7 +99,7 @@ export default class Task extends Component{
                     alignItems:'flex-start',
                     //backgroundColor:'yellow',
                   }}>
-                    <h style={{marginLeft:10,color:'black'}}>发布者：{this.props.uploader}</h>
+                    <h style={{marginLeft:10,color:'black'}}>发布者：{this.props.uploader.workNumber}</h>
                   </div>
                   <div style={{
                     display:'flex',
@@ -120,7 +141,7 @@ export default class Task extends Component{
                     alignItems:'flex-end',
                     marginRight:30
                   }}>
-                    <h style={{color:'black'}}>{this.props.date}</h>
+                    <h style={{color:'black'}}>{this.props.startDate + '-' + this.props.endDate}</h>
                   </div>
                 </div>
               </div>

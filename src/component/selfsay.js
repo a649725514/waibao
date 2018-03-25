@@ -2,7 +2,9 @@ import React , {Component} from 'react';
 export default class Selfsay extends Component{
     static defaultProps={
         title:'个人介绍',
-        icon: null
+        icon: null,
+        content: "如果你无法简洁的表达你的想法，那只说明你还不够了解它。"
+               +" --阿尔伯特·爱因斯坦"
     };
     constructor(props){
 		super(props);
@@ -64,8 +66,7 @@ export default class Selfsay extends Component{
                   justifyContent:'flex-start',
                   alignItems:'flex-start',
               }}>
-                <texrarea style={{marginLeft:20,fontSize:12,marginTop:20}}>{'如果你无法简洁的表达你的想法，那只说明你还不够了解它。'}</texrarea>
-                <texrarea style={{marginLeft:20,fontSize:12}}>{' --阿尔伯特·爱因斯坦'}</texrarea>
+                <texrarea style={{marginLeft:20,fontSize:12,marginTop:20}}>{this.props.content}</texrarea>
               </div>
               
             </div>

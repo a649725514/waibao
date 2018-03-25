@@ -5,6 +5,8 @@ import Msg from '../component/msg';
 import Topbar from '../component/topbar'
 //import { Scrollbars } from 'react-custom-scrollbars';
 import { Link } from "react-router-dom";
+const {ipcRenderer} = window.electron;
+
 //const test = './pages/test';
 class Message extends Component {
   constructor(props) {
@@ -13,7 +15,8 @@ class Message extends Component {
       width: document.body.clientWidth,
       height: document.body.clientHeight,
       Msgs: [],
-      current: 1
+      current: 1,
+      token:ipcRenderer.sendSync('get_mine_token','please')
     })
   }
   onChange = (page) => {
@@ -23,8 +26,27 @@ class Message extends Component {
   }
 
   componentWillMount() {
-    this.state.Msgs = Array.from(new Array(20), (val, index) => index);
-
+    var url = 'http://120.78.74.75:8080/demo/msg/getMsgOfCurrentUser'; // 接口url
+    fetch(url, {
+      "method": 'GET',
+      "headers": {
+        "Authorization": "Bearer "+this.state.token,
+        "Content-Type": "application/json",
+      },
+    }).then(
+      function (res) {
+        if (res.ok) {
+          // console.log(res.json());
+          return res.json()
+        } else {
+          { this.LogError(res) }
+        }
+      }
+    ).then( (PromiseValue) => {
+      for (var i = 0; i < PromiseValue.length; i++) {
+        this.setState({'Msgs': [...this.state.Msgs, PromiseValue[i]]})
+      }
+    });
   }
   render() {
     return (
@@ -49,9 +71,10 @@ class Message extends Component {
           <Link to='/message2'><Button style={{ borderRadius: 0, backgroundColor: '#f5f5f5' }}>系统</Button></Link>
         </div>
         <div>
-          {this.state.Msgs.slice(this.state.current * 4 - 3, this.state.current * 4 + 1).map((Message) => {
+          {this.state.Msgs.slice(this.state.current * 4 - 4, this.state.current * 4).map((Message) => {
+            console.log(Message)
             return (
-              <Msg user={'用户'+Message} situation="做的不错！" comefrom="任务a" />
+              <Msg user={Message.userName} situation={Message.context} comefrom={Message.taskId} />
             )
           })}
         </div>

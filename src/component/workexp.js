@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 const Step = Steps.Step;
 export default class Workexp extends Component{
     static defaultProps={
-
+        exp:null
     };
     constructor(props){
 		super(props);

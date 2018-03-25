@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import 'antd/dist/antd.css';
 export default class Workproject extends Component{
     static defaultProps={
-
+        projects: null
     };
     constructor(props){
 		super(props);

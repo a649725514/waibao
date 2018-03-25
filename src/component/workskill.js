@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 export default class Workskill extends Component{
     static defaultProps={
         src:null,
+        skills: null
     };
     constructor(props){
 		super(props);

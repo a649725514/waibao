@@ -21,7 +21,7 @@ function createWindow () {
 
   mainWindow.loadURL('http://localhost:3000/');
   // 打开开发者工具，默认不打开
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // 关闭window时触发下列事件.
   mainWindow.on('closed', function () {
@@ -72,6 +72,11 @@ ipc.on('end_check_employee_message', (event, arg) => {
   this.tevent = event;
 
 });
+
+ipc.on('get_mine_token', (event, arg) => {
+  let token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyMSIsImNyZWF0ZWQiOjE1MjE5NzkzNDU4MzMsImV4cCI6MTUyMjU4NDE0NX0.dsbdOsev4hy-N0us_JaCufEgH-uDuzi7iDq92BO313foEQQOC0-gRDDt708Zkc9iVPuXUtjOXlO-0T1W9tqe5Q'
+  event.returnValue = token;
+})
 
 // 所有窗口关闭时退出应用.
 app.on('window-all-closed', function () {

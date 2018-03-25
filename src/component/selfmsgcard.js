@@ -6,10 +6,11 @@ export default class Selfmeaasge extends Component{
     static defaultProps={
         name:'张三',
         company:'A外包公司',
-        skills:'JavaScript,CSS,html5',
         src:require('../pic/01.png'),
         src1:null,
-        src2:null
+        src2:null,
+        email:'',
+        tel:''
     };
     constructor(props){
 		super(props);
@@ -104,11 +105,11 @@ export default class Selfmeaasge extends Component{
                         color:'white',
                         fontSize:20,
                         marginBottom:10
-                    }}>{"王小红"}</h>
+                    }}>{this.props.name}</h>
                     <h style={{
                         color:'white',
                         marginBottom:10
-                    }}>{"D外包公司"}</h>
+                    }}>{this.props.company}</h>
                     <div style={{
                         display:'flex',
                         flexDirection:'row',
@@ -116,9 +117,9 @@ export default class Selfmeaasge extends Component{
                         alignItems:'center'
                     }}>
                         <img src={phone}></img>
-                        <h style={{color:'white',marginLeft:20,marginRight:40}}>{13486708888}</h>
+                        <h style={{color:'white',marginLeft:20,marginRight:40}}>{this.props.tel}</h>
                         <img src={envelope} style={{marginLeft:40,marginRight:20}}></img>
-                        <h style={{color:'white'}}>{'343000000@qq.com'}</h>
+                        <h style={{color:'white'}}>{this.props.email}</h>
                     </div>
                 </div> 
             </div>

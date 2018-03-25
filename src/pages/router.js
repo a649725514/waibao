@@ -77,7 +77,7 @@ const routes = [
     component: Selfmessage,
   },
   {
-    path:"/tasks",
+    path:"/tasks/:date0/:date1/:date2/:date3/:project/:date/:taskname/:stars/:time/:name/:duty/:tele/:email/:path",
     component: Tasks,
   },
   {

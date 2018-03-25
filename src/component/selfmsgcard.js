@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import phone from '../icon/phone.svg';
 import envelope from '../icon/envelope.svg';
+import { Link } from "react-router-dom";
 export default class Selfmeaasge extends Component{
     static defaultProps={
         name:'张三',
@@ -44,9 +45,11 @@ export default class Selfmeaasge extends Component{
                         justifyContent:'flex-start',
                         alignItems:'flex-end',
                     }}>
+                        <Link to='/contact'>
                         <img style={{
                             marginLeft:20
                         }} src={this.props.src1}></img>
+                        </Link>
                     </div>
                     <div style={{
                         display:'flex',

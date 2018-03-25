@@ -78,7 +78,9 @@ class Contact2 extends Component {
           {this.state.persion2.slice(this.state.current * 6 - 5, this.state.current * 6 + 1).map((persion2Info) => {
             return (
               <div>
+                <Link to='/employermessage'>
                 <Contactcard2 src={require('../pic/07.png')} name={persion2Info} />
+                </Link>
               </div>
             )
           })}

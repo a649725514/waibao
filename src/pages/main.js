@@ -120,10 +120,16 @@ class Main extends Component {
         }}>
           <Divider />
         </div>
-        {this.state.tasksInfo.slice(this.state.current * 3 - 2, this.state.current * 3 + 1).map((taskInfo) => {
+        {this.state.tasksInfo.slice(this.state.current * 3 - 3, this.state.current * 3).map((taskInfo) => {
           return (
             <div>
-              <Task task={taskInfo.taskContent} uploader={taskInfo.project.user} project={taskInfo.project.projectContent} time={taskInfo.workload} stars={taskInfo.securityLv}/>
+              <Task task={taskInfo.taskContent}
+                    uploader={taskInfo.taskPublisher} 
+                    project={taskInfo.project.projectContent} 
+                    time={taskInfo.workload}
+                    stars={taskInfo.securityLv} 
+                    startDate={taskInfo.taskBegin}
+                    endDate={taskInfo.taskEnd}/>
               <Selfdivider />
             </div>
           )

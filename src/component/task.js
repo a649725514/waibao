@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 export default class Task extends Component{
     static defaultProps={
         task:"任务a",
-        uploader: null,
+        uploader: {},
         project:"项目B",
         time:'8',
         stars:2,
-        startDate:'2018.3.1',
-        endDate:'2018.4.1',
-        date0: 'a',
-        date1: 'b',
-        date2: 'c',
-        date3: 'd',
+        startDate:null,
+        endDate:null,
+        date0: '',
+        date1: '',
+        date2: '',
+        date3: '',
         renwu:'/tasks'
     };
     constructor(props){
@@ -31,15 +31,14 @@ export default class Task extends Component{
              + `/${this.props.date2}`
              + `/${this.props.date3}`
              + `/${this.props.project}`
-             + `/${this.props.endDate}`
+             + `/${this.props.endDate!=null?this.props.endDate:'未知'}`
              + `/${this.props.task}`
              + `/${this.props.stars}`
              + `/${this.props.time}`
-             + `/${this.props.uploader.name}`
-             + `/${this.props.uploader.offer}`
-             + `/${this.props.uploader.tel}`
-             + `/${this.props.uploader.email}`
-             + `/..\\/pic\\/02.png`
+             + `/${this.props.uploader!=null?this.props.uploader.name:'未知'}`
+             + `/${this.props.uploader!=null?this.props.uploader.offer:'未知'}`
+             + `/${this.props.uploader!=null?this.props.uploader.tel:'未知'}`
+             + `/${this.props.uploader!=null?this.props.uploader.email:'未知'}`
             }
                 >
             <div style={{
@@ -99,7 +98,7 @@ export default class Task extends Component{
                     alignItems:'flex-start',
                     //backgroundColor:'yellow',
                   }}>
-                    <h style={{marginLeft:10,color:'black'}}>发布者：{this.props.uploader.workNumber}</h>
+                    <h style={{marginLeft:10,color:'black'}}>发布者：{this.props.uploader!=null?this.props.uploader.name:"未知"}</h>
                   </div>
                   <div style={{
                     display:'flex',
@@ -141,7 +140,7 @@ export default class Task extends Component{
                     alignItems:'flex-end',
                     marginRight:30
                   }}>
-                    <h style={{color:'black'}}>{this.props.startDate + '-' + this.props.endDate}</h>
+                    <h style={{color:'black'}}>{(this.props.startDate==null?'未知':this.props.startDate.slice(0,10)) + '-' + (this.props.endDate==null?'未定':this.props.endDate.slice(0,10))}</h>
                   </div>
                 </div>
               </div>

@@ -10,10 +10,10 @@ export default class Task extends Component{
         stars:2,
         startDate:null,
         endDate:null,
-        date0: '',
-        date1: '',
-        date2: '',
-        date3: '',
+        date0: ' ',
+        date1: ' ',
+        date2: ' ',
+        date3: ' ',
         renwu:'/tasks'
     };
     constructor(props){
@@ -39,6 +39,7 @@ export default class Task extends Component{
              + `/${this.props.uploader!=null?this.props.uploader.offer:'未知'}`
              + `/${this.props.uploader!=null?this.props.uploader.tel:'未知'}`
              + `/${this.props.uploader!=null?this.props.uploader.email:'未知'}`
+             + `/`
             }
                 >
             <div style={{

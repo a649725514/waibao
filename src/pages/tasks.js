@@ -40,8 +40,7 @@ export default class Tasks extends Component {
                         name={this.state.info.name}
                         duty={this.state.info.duty}
                         tele={this.state.info.tele}
-                        email={this.state.info.email}
-                        path={this.state.info.path}/>
+                        email={this.state.info.email}/>
                     <Bolddivider />
                     <Selfsay title='任务说明' />
                     <Bolddivider />

@@ -93,7 +93,7 @@ const routes = [
     component: Otherprojects,
   },
   {
-    path:"/othermessage",
+    path:"/othermessage/:id",
     component: Othermessage,
   },
   {

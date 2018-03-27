@@ -3,7 +3,7 @@ export default class Contactcard extends Component{
     static defaultProps={
         name:'张三',
         company:'A外包公司',
-        skills:'JavaScript,CSS,html5',
+        skills:['JavaScript','CSS','html5'],
         src:require('../pic/01.png')
     };
     constructor(props){
@@ -54,7 +54,9 @@ export default class Contactcard extends Component{
                 <h style={{margin:5}}>{this.props.name}</h>
                 <h style={{margin:5,fontSize:12,color:'grey'}}>{this.props.company}</h>
                 <h style={{margin:5}}>{"技能"}</h>
-                <h style={{margin:5,fontSize:12,color:'grey'}}>{this.props.skills}</h>
+                <h style={{margin:5,fontSize:12,color:'grey'}}>{this.props.skills.map((skill)=>{
+                    return(skill+' ')
+                })}</h>
               </div>
             </div>
         );

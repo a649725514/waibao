@@ -21,7 +21,7 @@ function createWindow () {
 
   mainWindow.loadURL('http://localhost:3000/');
   // 打开开发者工具，默认不打开
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // 关闭window时触发下列事件.
   mainWindow.on('closed', function () {
@@ -74,7 +74,7 @@ ipc.on('end_check_employee_message', (event, arg) => {
 });
 
 ipc.on('get_mine_token', (event, arg) => {
-  let token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyMSIsImNyZWF0ZWQiOjE1MjE5NzkzNDU4MzMsImV4cCI6MTUyMjU4NDE0NX0.dsbdOsev4hy-N0us_JaCufEgH-uDuzi7iDq92BO313foEQQOC0-gRDDt708Zkc9iVPuXUtjOXlO-0T1W9tqe5Q'
+  let token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyMSIsImNyZWF0ZWQiOjE1MjE5NzUxMTgwNzYsImV4cCI6MTUyMjU3OTkxOH0.PsBAl4jkV_qIRy72fa3UDAFWfXaaPOvvIAYYUzFF7mjFDHuSnBfYr6LtQZrRJnCCq3Rh8W2HOYV90BMOV7KA2Q'
   event.returnValue = token;
 })
 

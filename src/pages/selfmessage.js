@@ -21,7 +21,7 @@ export default class Selfmessage extends Component {
         })
     }
     componentWillMount() {
-        var url = 'http://120.78.74.75:8080/demo/s/getUserInfoById?id=10021'; // 接口url
+        var url = 'http://120.78.74.75:8080/demo/s/getInfoOfCurrentUser'; // 接口url
         fetch(url, {
             "method": 'GET',
             "headers": {
@@ -57,13 +57,17 @@ export default class Selfmessage extends Component {
             }}>
                 <Topbar title="个人 信息" />
                 <Scrollbars style={{ width: this.state.width * 0.85, height: this.state.height * 0.94 }}>
-                    <Selfmsgcard name={this.state.mineInfo.name} email={this.state.mineInfo.email} tel={this.state.mineInfo.tel} src2={require('../icon/page.svg')} />
+                    <Selfmsgcard 
+                        name={this.state.mineInfo.name} 
+                        email={this.state.mineInfo.email} 
+                        tel={this.state.mineInfo.tel} 
+                        src2={require('../icon/page.svg')} />
                     <Bolddivider />
-                    <Selfsay content={this.state.mineInfo.department} icon={require('../icon/pencil.svg')} />
+                    <Selfsay icon={require('../icon/pencil.svg')} />
                     <Bolddivider />
-                    <Workexp />
+                    <Workexp exp={this.state.mineInfo.exp}/>
                     <Bolddivider />
-                    <Workskill src={require('../icon/plus.svg')} />
+                    <Workskill skills={this.state.mineInfo.skills}/>
                     <Bolddivider />
                     <Workproject />
                     <Bolddivider />

@@ -100,7 +100,7 @@ export default class Workskill extends Component {
                                                     // console.log(res.json());
                                                     return res.json()
                                                 } else {
-                                                    { this.LogError(res) }
+                                                    { console.log(res) }
                                                 }
 
                                             }

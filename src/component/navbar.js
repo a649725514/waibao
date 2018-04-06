@@ -75,6 +75,7 @@ export default class Navbar extends Component {
                   <h style={{color:'black'}}>通讯录</h>
                 </div>
                 </Link>
+                <Link to='/piechart'>
                 <div style={{
                   width:this.state.width*0.15,
                   height:this.state.height*0.2,
@@ -85,8 +86,9 @@ export default class Navbar extends Component {
                 }}>
                   {/* <Icon type='drawer'/> */}
                   <img src={piechart} alt='piechart'></img>
-                  工作统计
+                  <h style={{color:'black'}}>工作统计</h>
                 </div>
+                </Link>
                 <Link to='/selfmessage'>
                 <div style={{
                   width:this.state.width*0.15,

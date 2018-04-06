@@ -4,6 +4,7 @@ import Bolddivider from '../component/bolddivider';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Selfsay from '../component/selfsay';
 import Taskcard from '../component/taskcard';
+import Comment from '../component/comment1';
 export default class Tasks extends Component {
     constructor(props){
         super(props);
@@ -44,6 +45,7 @@ export default class Tasks extends Component {
                     <Bolddivider />
                     <Selfsay title='任务说明' />
                     <Bolddivider />
+                    <Comment />
                 </Scrollbars>
             </div>
         );

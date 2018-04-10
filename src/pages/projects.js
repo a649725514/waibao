@@ -5,6 +5,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import Selfsay from '../component/selfsay';
 import Notice from '../component/notice';
 import Projectcard from '../component/projectcard';
+import Comment from '../component/comment';
 export default class Projects extends Component {
     constructor(props){
         super(props);
@@ -31,6 +32,7 @@ export default class Projects extends Component {
                     <Bolddivider />
                     <Notice />
                     <Bolddivider />
+                    <Comment />
                 </Scrollbars>
             </div>
         );

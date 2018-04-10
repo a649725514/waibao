@@ -17,7 +17,7 @@ export default class Msg extends Component{
         return (
             <div style={{
                 display:'flex',
-                width:this.state.width*0.6,
+                width:this.state.width*0.7,
                 height:this.state.height*0.18,
                 marginTop:10,
                 marginBottom:10,
@@ -60,7 +60,7 @@ export default class Msg extends Component{
               </div>
               <div style={{
                   display:'flex',
-                  width:this.state.width*0.6-this.state.height*0.13,
+                  width:this.state.width*0.7-this.state.height*0.13,
                   height:this.state.height*0.18,
                   flexDirection:'column',
                   justifyContent:'center',
@@ -69,7 +69,7 @@ export default class Msg extends Component{
               }}>
                   <div style={{
                       display:'flex',
-                      width:this.state.width*0.6-this.state.height*0.13,
+                      width:this.state.width*0.7-this.state.height*0.13,
                       height:this.state.height*0.05,
                       flexDirection:'row',
                       justifyContent:'center',
@@ -77,7 +77,7 @@ export default class Msg extends Component{
                   }}>
                       <div style={{
                           display:'flex',
-                          width:this.state.width*0.6/2-this.state.height*0.13/2,
+                          width:this.state.width*0.7/2-this.state.height*0.13/2,
                           height:this.state.height*0.05,
                           flexDirection:'row',
                           justifyContent:'flex-start',
@@ -87,7 +87,7 @@ export default class Msg extends Component{
                       </div>
                       <div style={{
                           display:'flex',
-                          width:this.state.width*0.6/2-this.state.height*0.13/2,
+                          width:this.state.width*0.7/2-this.state.height*0.13/2,
                           height:this.state.height*0.05,
                           flexDirection:'row',
                           justifyContent:'flex-end',
@@ -98,7 +98,7 @@ export default class Msg extends Component{
                   </div>
                   <div style={{
                       display:'flex',
-                      width:this.state.width*0.6-this.state.height*0.13,
+                      width:this.state.width*0.7-this.state.height*0.13,
                       height:1,
                       flexDirection:'row',
                       justifyContent:'center',
@@ -108,7 +108,7 @@ export default class Msg extends Component{
                   </div>
                   <div style={{
                       display:'flex',
-                      width:this.state.width*0.6-this.state.height*0.13,
+                      width:this.state.width*0.7-this.state.height*0.13,
                       height:this.state.height*0.05,
                       flexDirection:'row',
                       justifyContent:'flex-start',
@@ -119,7 +119,7 @@ export default class Msg extends Component{
                   </div>
                   <div style={{
                       display:'flex',
-                      width:this.state.width*0.6-this.state.height*0.13,
+                      width:this.state.width*0.7-this.state.height*0.13,
                       height:this.state.height*0.05,
                       flexDirection:'row',
                       justifyContent:'flex-end',

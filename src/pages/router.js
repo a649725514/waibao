@@ -15,7 +15,9 @@ import Otherprojects from './otherprojects';
 import Othermessage from './othermessage';
 import Othertasks from './othertasks';
 import Employermessage from './employermessage';
+import Piechart from './piechart';
 import Error from './e404';
+import Login from './login';
 // Some folks find value in a centralized route config.
 // A route config is just data. React is great at mapping
 // data into components, and <Route> is a component.
@@ -24,26 +26,28 @@ import Error from './e404';
 // first our route components
 //const Main = () => <h2>Main</h2>;
 
-const Sandwiches = () => <h2>Sandwiches</h2>;
+const loginstate = true;
 
-const Tacos = ({ routes }) => (
-  <div>
-    <h2>Tacos</h2>
-    <ul>
-      <li>
-        <Link to="/tacos/bus">Bus</Link>
-      </li>
-      <li>
-        <Link to="/tacos/cart">Cart</Link>
-      </li>
-    </ul>
+// const Sandwiches = () => <h2>Sandwiches</h2>;
 
-    {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
-  </div>
-);
+// const Tacos = ({ routes }) => (
+//   <div>
+//     <h2>Tacos</h2>
+//     <ul>
+//       <li>
+//         <Link to="/tacos/bus">Bus</Link>
+//       </li>
+//       <li>
+//         <Link to="/tacos/cart">Cart</Link>
+//       </li>
+//     </ul>
 
-const Bus = () => <h3>Bus</h3>;
-const Cart = () => <h3>Cart</h3>;
+//     {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+//   </div>
+// );
+
+// const Bus = () => <h3>Bus</h3>;
+// const Cart = () => <h3>Cart</h3>;
 
 ////////////////////////////////////////////////////////////
 // then our route config
@@ -105,23 +109,31 @@ const routes = [
     component: Error,
   },
   {
-    path: "/sandwiches",
-    component: Sandwiches
+    path:"/login",
+    component: Login,
   },
   {
-    path: "/tacos",
-    component: Tacos,
-    routes: [
-      {
-        path: "/tacos/bus",
-        component: Bus
-      },
-      {
-        path: "/tacos/cart",
-        component: Cart
-      }
-    ]
+    path:"/piechart",
+    component: Piechart,
   }
+  // {
+  //   path: "/sandwiches",
+  //   component: Sandwiches
+  // },
+  // {
+  //   path: "/tacos",
+  //   component: Tacos,
+  //   routes: [
+  //     {
+  //       path: "/tacos/bus",
+  //       component: Bus
+  //     },
+  //     {
+  //       path: "/tacos/cart",
+  //       component: Cart
+  //     }
+  //   ]
+  // }
 ];
 
 // wrap <Route> and use this everywhere instead, then when
@@ -135,7 +147,13 @@ const RouteWithSubRoutes = route => (
     )}
   />
 );
-
+function IsLogined(){
+  if(loginstate==false){  
+    return <Login /> 
+  }else{  
+    return <div>{routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}</div>
+  }  
+}
 const RouteConfigExample = () => (
   <Router>
     <div style={{
@@ -155,7 +173,7 @@ const RouteConfigExample = () => (
         </li>
       </ul> */}
       <Navbar />
-      {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+      <IsLogined />
     </div>
   </Router>
 );

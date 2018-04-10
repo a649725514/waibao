@@ -24,7 +24,7 @@ export default class Topbar extends Component {
                 flexDirection:'row',
                 justifyContent:'center',
                 alignItems:'center',
-                backgroundColor:'#f5f5f5'
+                backgroundColor:'rgb(241,241,245)'
               }}>
                 <div style={{
                   display:'flex',

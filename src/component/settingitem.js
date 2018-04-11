@@ -19,6 +19,7 @@ export default class Settingitem extends Component {
                 height: this.state.width * 0.15,
                 flexDirection: 'column',
                 backgroundColor: 'rgb(92,172,238)',
+                margin:this.state.height*0.05
             }}>
                 <div style={{
                     display: 'flex',
@@ -37,7 +38,7 @@ export default class Settingitem extends Component {
                     height: this.state.width * 0.05,
                     flexDirection: 'column',
                     backgroundColor: 'rgb(92,172,238)',
-                    justifyContent:'center',
+                    justifyContent:'flex-start',
                     alignItems:'center'
                 }}>
                     <h style={{

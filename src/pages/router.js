@@ -18,6 +18,7 @@ import Employermessage from './employermessage';
 import Piechart from './piechart';
 import Error from './e404';
 import Login from './login';
+import Setting from './setting';
 const {ipcRenderer} = window.electron;
 
 // Some folks find value in a centralized route config.
@@ -115,6 +116,10 @@ const routes = [
   {
     path:"/piechart",
     component: Piechart,
+  },
+  {
+    path:'/setting',
+    component: Setting,
   }
   // {
   //   path: "/sandwiches",

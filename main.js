@@ -8,7 +8,7 @@ const ipc = require('electron').ipcMain;
 const cronJob = require('cron').CronJob;
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 let mainWindow
-let token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyMSIsImNyZWF0ZWQiOjE1MjI2NzkxNzU0NTYsImV4cCI6MTUyMzI4Mzk3NX0.aVfzBSOxtrsjffx4K-Jja9jiR_v7YA5fp1HkvXYwrovMAXnDprYk6jrzfC180BK57gWM5xi8WJhoqDXmdkDocQ"
+let token = ""
 // var server = new StaticServer({
 //   rootPath: path.join(__dirname,'build'),                // required, the root of the server file tree
 //   port: 3000,               // required, the port to listen
@@ -77,12 +77,13 @@ ipc.on('end_check_employee_message', (event, arg) => {
 
 ipc.on('get_mine_token', (event, arg) => {
   // this.token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyMSIsImNyZWF0ZWQiOjE1MjI2NzkxNzU0NTYsImV4cCI6MTUyMzI4Mzk3NX0.aVfzBSOxtrsjffx4K-Jja9jiR_v7YA5fp1HkvXYwrovMAXnDprYk6jrzfC180BK57gWM5xi8WJhoqDXmdkDocQ'
-  console.log(token)
   event.returnValue = token;
 })
 
 ipc.on('Login', (event, arg) => {
   token = arg;
+  createCameraWindows();
+
   // console.log(arg)
   event.returnValue = 'ok'
 })

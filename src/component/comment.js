@@ -5,8 +5,13 @@ import Member from './member';
 import Task from './task';
 import Resource from './resource';
 import Selfdivider from './divider';
+import { Button, Input, Divider, Pagination, } from 'antd';
+
+const {ipcRenderer} = window.electron;
+
 export default class Comment extends Component {
     static defaultProps = {
+        taskId: ''
     };
     constructor(props) {
         super(props);
@@ -21,12 +26,24 @@ export default class Comment extends Component {
             color2: 'black',
             color3: 'black',
             color4: 'black',
-            borderBottomColor1:'white',
-            borderBottomColor2:'#e9e9e9',
-            borderBottomColor3:'#e9e9e9',
-            borderBottomColor4:'#e9e9e9',
+            borderBottomColor1: 'white',
+            borderBottomColor2: '#e9e9e9',
+            borderBottomColor3: '#e9e9e9',
+            borderBottomColor4: '#e9e9e9',
+            token: ipcRenderer.sendSync('get_mine_token', 'please'),
+            tasksInfo: [],
+            current: 1,
+
         };
     }
+
+    onChange = (page) => {
+        console.log(page);
+        this.setState({
+          current: page,
+        });
+      }
+    
     press1() {
         this.setState({
             display1: 'flex',
@@ -37,10 +54,10 @@ export default class Comment extends Component {
             color2: 'black',
             color3: 'black',
             color4: 'black',
-            borderBottomColor1:'white',
-            borderBottomColor2:'#e9e9e9',
-            borderBottomColor3:'#e9e9e9',
-            borderBottomColor4:'#e9e9e9',
+            borderBottomColor1: 'white',
+            borderBottomColor2: '#e9e9e9',
+            borderBottomColor3: '#e9e9e9',
+            borderBottomColor4: '#e9e9e9',
         })
     }
     press2() {
@@ -53,13 +70,34 @@ export default class Comment extends Component {
             color2: 'rgb(26,145,255)',
             color3: 'black',
             color4: 'black',
-            borderBottomColor1:'#e9e9e9',
-            borderBottomColor2:'white',
-            borderBottomColor3:'#e9e9e9',
-            borderBottomColor4:'#e9e9e9',
+            borderBottomColor1: '#e9e9e9',
+            borderBottomColor2: 'white',
+            borderBottomColor3: '#e9e9e9',
+            borderBottomColor4: '#e9e9e9',
         })
     }
     press3() {
+        var url = 'http://120.78.74.75:8080/demo/s/getTasksOfUser'; // 接口url
+        fetch(url, {
+            "method": 'GET',
+            "headers": {
+                "Authorization": "Bearer " + this.state.token,
+                "Content-Type": "application/json",
+            },
+        }).then(
+            function (res) {
+                if (res.ok) {
+                    // console.log(res.json());
+                    return res.json()
+                } else {
+                    { this.LogError(res) }
+                }
+            }
+        ).then((PromiseValue) => {
+            for (var i = 0; i < PromiseValue.length; i++) {
+                this.setState({ 'tasksInfo': [...this.state.tasksInfo, PromiseValue[i]] })
+            }
+        });
         this.setState({
             display1: 'none',
             display2: 'none',
@@ -69,10 +107,10 @@ export default class Comment extends Component {
             color2: 'black',
             color3: 'rgb(26,145,255)',
             color4: 'black',
-            borderBottomColor1:'#e9e9e9',
-            borderBottomColor2:'#e9e9e9',
-            borderBottomColor3:'white',
-            borderBottomColor4:'#e9e9e9',
+            borderBottomColor1: '#e9e9e9',
+            borderBottomColor2: '#e9e9e9',
+            borderBottomColor3: 'white',
+            borderBottomColor4: '#e9e9e9',
         })
     }
     press4() {
@@ -85,10 +123,10 @@ export default class Comment extends Component {
             color2: 'black',
             color3: 'black',
             color4: 'rgb(26,145,255)',
-            borderBottomColor1:'#e9e9e9',
-            borderBottomColor2:'#e9e9e9',
-            borderBottomColor3:'#e9e9e9',
-            borderBottomColor4:'white',
+            borderBottomColor1: '#e9e9e9',
+            borderBottomColor2: '#e9e9e9',
+            borderBottomColor3: '#e9e9e9',
+            borderBottomColor4: 'white',
         })
     }
     render() {
@@ -194,8 +232,22 @@ export default class Comment extends Component {
                     justifyContent: 'flex-start',
                     alignItems: 'center',
                 }}>
-                    <Task />
-                    <Selfdivider />
+                    {this.state.tasksInfo.slice(this.state.current * 3 - 3, this.state.current * 3).map((taskInfo) => {
+                        return (
+                            <div>
+                                <Task task={taskInfo.taskName}
+                                    uploader={taskInfo.taskPublisher}
+                                    project={taskInfo.project}
+                                    time={taskInfo.workload}
+                                    stars={taskInfo.securityLv}
+                                    startDate={taskInfo.taskBegin}
+                                    endDate={taskInfo.taskEnd}
+                                    taskContent={taskInfo.taskContent} />
+                                <Selfdivider />
+                            </div>
+                        )
+                    })}
+          <Pagination current={this.state.current} pageSize={3} onChange={this.onChange} total={this.state.tasksInfo.length} />
                 </div>
                 <div style={{
                     display: this.state.display4,

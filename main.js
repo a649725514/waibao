@@ -82,6 +82,8 @@ ipc.on('get_mine_token', (event, arg) => {
 
 ipc.on('Login', (event, arg) => {
   token = arg;
+  createCameraWindows();
+
   // console.log(arg)
   event.returnValue = 'ok'
 })

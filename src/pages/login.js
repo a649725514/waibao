@@ -55,10 +55,12 @@ export default class Login extends Component {
                 alert("账号密码错误")
             } else {
                 const reply = ipcRenderer.sendSync('Login', PromiseValue.token)
-                alert("登录成功")
-                this.setState({
-                    isLogin: true
-                })
+                if (reply == 'ok') {
+
+                    this.setState({
+                        isLogin: true
+                    })
+                }
             }
         })
     }
@@ -68,10 +70,13 @@ export default class Login extends Component {
         const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
         const suffix1 = password ? <Icon type="close-circle" onClick={this.emitEmpty1} /> : null;
         if (this.state.isLogin) {
+
             return (
+
                 <Redirect to="/main" />
             )
         }
+
         return (
             <div style={{
                 display: 'flex',

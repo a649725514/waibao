@@ -123,13 +123,14 @@ class Main extends Component {
         {this.state.tasksInfo.slice(this.state.current * 3 - 3, this.state.current * 3).map((taskInfo) => {
           return (
             <div>
-              <Task task={taskInfo.taskContent}
+              <Task task={taskInfo.taskName}
                     uploader={taskInfo.taskPublisher} 
-                    project={taskInfo.project.projectContent} 
+                    project={taskInfo.project} 
                     time={taskInfo.workload}
                     stars={taskInfo.securityLv} 
                     startDate={taskInfo.taskBegin}
-                    endDate={taskInfo.taskEnd}/>
+                    endDate={taskInfo.taskEnd}
+                    taskContent={taskInfo.taskContent}/>
               <Selfdivider />
             </div>
           )

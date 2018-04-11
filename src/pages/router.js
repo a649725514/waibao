@@ -81,7 +81,7 @@ const routes = [
     component: Selfmessage,
   },
   {
-    path:"/tasks/:date0/:date1/:date2/:date3/:project/:date/:taskname/:stars/:time/:name/:duty/:tele/:email",
+    path:"/tasks/:taskContent/:date0/:date1/:date2/:date3/:project/:date/:taskname/:stars/:time/:name/:duty/:tele/:email",
     component: Tasks,
   },
   {
@@ -89,7 +89,7 @@ const routes = [
     component: Othertasks,
   },
   {
-    path:"/projects",
+    path:"/projects/:projectContent/:date/:projectname/:stars/:time/:name/:duty/:tele/:email",
     component: Projects,
   },
   {

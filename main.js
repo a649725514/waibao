@@ -77,7 +77,6 @@ ipc.on('end_check_employee_message', (event, arg) => {
 
 ipc.on('get_mine_token', (event, arg) => {
   // this.token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyMSIsImNyZWF0ZWQiOjE1MjI2NzkxNzU0NTYsImV4cCI6MTUyMzI4Mzk3NX0.aVfzBSOxtrsjffx4K-Jja9jiR_v7YA5fp1HkvXYwrovMAXnDprYk6jrzfC180BK57gWM5xi8WJhoqDXmdkDocQ'
-  console.log(token)
   event.returnValue = token;
 })
 

@@ -34,16 +34,12 @@ export default class Tasks extends Component {
                         stars={this.state.info.stars} 
                         counts={this.state.info.counts} 
                         time={this.state.info.time}
-                        date0={this.state.info.date0}
-                        date1={this.state.info.date1}
-                        date2={this.state.info.date2}
-                        date3={this.state.info.date3}
                         name={this.state.info.name}
                         duty={this.state.info.duty}
                         tele={this.state.info.tele}
                         email={this.state.info.email}/>
                     <Bolddivider />
-                    <Selfsay title='任务说明' />
+                    <Selfsay title='任务说明' content={this.state.info.taskContent}/>
                     <Bolddivider />
                     <Comment />
                 </Scrollbars>

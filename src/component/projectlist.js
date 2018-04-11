@@ -8,6 +8,7 @@ const { ipcRenderer } = window.electron;
 
 export default class Projectlist extends Component {
     static defaultProps = {
+        id: 0,
         projectName: '项目B',
         stars: 2,
         projectId: '',
@@ -118,6 +119,7 @@ export default class Projectlist extends Component {
                         alignItems: 'center'
                     }}>
                         <Link to={`/projects`
+                            + `/${this.props.id}`
                             + `/${this.props.projectContent}`
                             + `/${this.props.projectEnd!=''?this.props.projectEnd:'未知'}`
                             + `/${this.props.projectName}`
@@ -150,7 +152,9 @@ export default class Projectlist extends Component {
                     {this.state.tasksInfo.map((taskInfo) => {
                         return (
                             <div>
-                                <Task task={taskInfo.taskName}
+                                <Task
+                                    id={taskInfo.id} 
+                                    task={taskInfo.taskName}
                                     uploader={taskInfo.taskPublisher}
                                     project={taskInfo.project}
                                     time={taskInfo.workload}

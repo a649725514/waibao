@@ -8,7 +8,7 @@ const ipc = require('electron').ipcMain;
 const cronJob = require('cron').CronJob;
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 let mainWindow
-let token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAwMCIsImNyZWF0ZWQiOjE1MjMzNjA3MjA4NzIsImV4cCI6MTUyMzk2NTUyMH0.LdJofkELm2swR_0bzYYelLLMJ8FbArdorNTuQULYXltnUzbN4_yRU-JpWsRaLlxW8AeSr31fTvbHiLj_hAdetA"
+let token = ""
 // var server = new StaticServer({
 //   rootPath: path.join(__dirname,'build'),                // required, the root of the server file tree
 //   port: 3000,               // required, the port to listen

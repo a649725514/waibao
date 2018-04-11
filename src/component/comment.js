@@ -11,6 +11,7 @@ const {ipcRenderer} = window.electron;
 
 export default class Comment extends Component {
     static defaultProps = {
+        taskId: ''
     };
     constructor(props) {
         super(props);

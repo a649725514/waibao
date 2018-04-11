@@ -102,6 +102,7 @@ class Main2 extends Component {
           return (
             <div>
             <Projectlist 
+              id={projectInfo.id}
               projectName={projectInfo.name}
               stars={projectInfo.sevurityLv}
               projectId={projectInfo.id}

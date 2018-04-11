@@ -3,6 +3,7 @@ import  { Rate } from 'antd';
 import { Link } from "react-router-dom";
 export default class Task extends Component{
     static defaultProps={
+        id: 0,
         task:"任务a",
         uploader: {},
         project:"项目B",
@@ -26,6 +27,7 @@ export default class Task extends Component{
     render(){
         return (
           <Link to={this.props.renwu
+            + `/${this.props.id}`
             + `/${this.props.taskContent}`
              + `/${this.props.date0}`
              + `/${this.props.date1}`

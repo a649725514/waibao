@@ -41,7 +41,7 @@ export default class Tasks extends Component {
                     <Bolddivider />
                     <Selfsay title='任务说明' content={this.state.info.taskContent}/>
                     <Bolddivider />
-                    <Comment />
+                    <Comment taskId={this.state.info.id}/>
                 </Scrollbars>
             </div>
         );

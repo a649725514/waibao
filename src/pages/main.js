@@ -123,7 +123,9 @@ class Main extends Component {
         {this.state.tasksInfo.slice(this.state.current * 3 - 3, this.state.current * 3).map((taskInfo) => {
           return (
             <div>
-              <Task task={taskInfo.taskName}
+              <Task 
+                    id={taskInfo.id}
+                    task={taskInfo.taskName}
                     uploader={taskInfo.taskPublisher} 
                     project={taskInfo.project} 
                     time={taskInfo.workload}

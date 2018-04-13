@@ -3,6 +3,7 @@ import  { Rate,Breadcrumb,Button,Steps } from 'antd';
 import arrowl from '../icon/arrow_left.svg';
 import phone from '../icon/phone-b.svg';
 import email from '../icon/envelope-b.svg';
+import { Link } from "react-router-dom";
 //import history from 'history/createBrowserHistory' 
 const Step = Steps.Step;
 export default class Projectcard extends Component{
@@ -61,7 +62,7 @@ export default class Projectcard extends Component{
                     justifyContent:'flex-start',
                     alignItems:'center',
                 }}>
-                    <img onClick={this.back.bind(this)} style={{marginLeft:20,marginRight:20}} src={arrowl}></img>
+                    <Link to='/main2'><img onClick={this.back.bind(this)} style={{marginLeft:20,marginRight:20}} src={arrowl}></img></Link>
                     <h style={{fontSize:20}}>{this.props.taskname}</h>
                 </div>
                 <div style={{
@@ -136,10 +137,10 @@ export default class Projectcard extends Component{
                   alignItems:'center',
               }}>
                 <Steps current={1}>
-                    <Step title="已发布" description={this.props.date0} />
-                    <Step title="进行中" description={this.props.date1} />
-                    <Step title="待审核" description={this.props.date2} />
-                    <Step title="已完成" description={this.props.date3}/>
+                    <Step title="发布" description={this.props.date0} />
+                    <Step title="开工" description={this.props.date1} />
+                    <Step title="交付" description={this.props.date2} />
+                    <Step title="完工" description={this.props.date3}/>
                 </Steps>
               </div>
               <div style={{

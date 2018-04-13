@@ -5,7 +5,7 @@ import Member from './member';
 import Task from './task';
 import Resource from './resource';
 import Selfdivider from './divider';
-import { Button } from 'antd/lib/radio';
+import { Button, Upload } from 'antd';
 export default class Comment1 extends Component {
     static defaultProps = {
     };
@@ -180,7 +180,9 @@ export default class Comment1 extends Component {
                     alignItems: 'center',
                 }}>
                     <Say />
-                    <Msg />
+                    <Msg user={"用户H"} situation={"做的不错"} comefrom={"1L"} pic={require('../pic/01.png')} />
+                    <Msg user={"用户C回复1L"} situation={"谢谢！"} comefrom={"2L"} pic={require('../pic/02.png')} />
+                    <Msg user={"用户H回复2L"} situation={"/smile"} comefrom={"3L"} pic={require('../pic/01.png')} />
                 </div>
                 <div style={{
                     display: this.state.display2,
@@ -216,21 +218,23 @@ export default class Comment1 extends Component {
                         borderBottomColor: '#e9e9e9',
                         borderBottomWidth: 1
                     }}>
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            width: this.state.width * 0.85/2,
-                            height: this.state.height * 0.06,
-                            justifyContent: 'flex-start',
-                            alignItems: 'center',
-                        }}>
-                            <img style={{marginLeft:this.state.width*0.02}} src={require('../icon/plus-blue.svg')}></img>
-                            <h style={{color:'rgb(26,145,255)',fontWeight:'bold',marginLeft:10}}>{'添加工作成果'}</h>
-                        </div>
+                        <Upload>
+                            <div style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                width: this.state.width * 0.85 / 2,
+                                height: this.state.height * 0.06,
+                                justifyContent: 'flex-start',
+                                alignItems: 'center',
+                            }}>
+                                <img style={{ marginLeft: this.state.width * 0.02 }} src={require('../icon/plus-blue.svg')}></img>
+                                <h style={{ color: 'rgb(26,145,255)', fontWeight: 'bold', marginLeft: 10 }}>{'添加工作成果'}</h>
+                            </div>
+                        </Upload>
                         <div style={{
                             display: 'flex',
                             flexDirection: 'column',
-                            width: this.state.width * 0.85/2,
+                            width: this.state.width * 0.85 / 2,
                             height: this.state.height * 0.06,
                             justifyContent: 'center',
                             alignItems: 'flex-end',
@@ -242,11 +246,11 @@ export default class Comment1 extends Component {
                                 height: this.state.height * 0.04,
                                 justifyContent: 'center',
                                 alignItems: 'center',
-                                backgroundColor:'rgb(132,195,85)',
-                                borderRadius:3,
-                                marginRight:this.state.width*0.02
-                            }} onClick={()=>this.click()}>
-                                <h style={{color:'white'}}>{'开始成果审核'}</h>
+                                backgroundColor: 'rgb(132,195,85)',
+                                borderRadius: 3,
+                                marginRight: this.state.width * 0.02
+                            }} onClick={() => this.click()}>
+                                <h style={{ color: 'white' }}>{'开始成果审核'}</h>
                             </div>
                         </div>
                     </div>

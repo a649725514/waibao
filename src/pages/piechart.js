@@ -11,6 +11,7 @@ import {
     ArcSeries,
     RadialChart
 } from 'react-vis';
+import { Scrollbars } from 'react-custom-scrollbars';
 import { curveCatmullRom } from 'd3-shape';
 const PI = Math.PI;
 export default class Piechart extends Component {
@@ -33,7 +34,10 @@ export default class Piechart extends Component {
                 alignItems: 'center'
             }}>
                 <Topbar title="工作统计" />
-                <div></div>
+                <Scrollbars style={{ width: this.state.width * 0.85, height: this.state.height * 0.94 }}>
+                <div>
+                    <img style={{width:this.state.width*0.85}} src={require('../pic/rili.png')}></img>
+                </div>
                 <div style={{
                     display: 'flex',
                     width: this.state.width * 0.85,
@@ -104,6 +108,7 @@ export default class Piechart extends Component {
                         <h>{'近期参与项目'}</h>
                     </div>
                 </div>
+                </Scrollbars>
             </div>
         );
     }

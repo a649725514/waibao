@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Say from './say';
 import Msg from './msg';
-import Member from './member';
+import Member1 from './member1';
 import Task from './task';
 import Resource from './resource';
 import Selfdivider from './divider';
-import { Button, Input, Divider, Pagination, } from 'antd';
+import { Button, Input, Divider, Pagination,Upload } from 'antd';
 
-const {ipcRenderer} = window.electron;
+const color = ['red', 'orange', 'black'];
+const { ipcRenderer } = window.electron;
 
 export default class Comment extends Component {
     static defaultProps = {
@@ -40,10 +41,10 @@ export default class Comment extends Component {
     onChange = (page) => {
         console.log(page);
         this.setState({
-          current: page,
+            current: page,
         });
-      }
-    
+    }
+
     press1() {
         this.setState({
             display1: 'flex',
@@ -214,7 +215,9 @@ export default class Comment extends Component {
                     alignItems: 'center',
                 }}>
                     <Say />
-                    <Msg />
+                    <Msg user={"用户H"} situation={"做的不错"} comefrom={"1L"} pic={require('../pic/01.png')} />
+                    <Msg user={"用户C回复1L"} situation={"谢谢！"} comefrom={"2L"} pic={require('../pic/02.png')} />
+                    <Msg user={"用户H回复2L"} situation={"/smile"} comefrom={"3L"} pic={require('../pic/01.png')} />
                 </div>
                 <div style={{
                     display: this.state.display2,
@@ -223,7 +226,10 @@ export default class Comment extends Component {
                     justifyContent: 'flex-start',
                     alignItems: 'center',
                 }}>
-                    <Member />
+                    <Member1 name={'甲'} company={'技术部 总监'} pic={require('../pic/03.png')} color={color[0]} />
+                    <Member1 name={'乙'} company={'人事部 职员'} pic={require('../pic/04.png')} color={color[1]} />
+                    <Member1 name={'小李'} company={'Y外包公司'} pic={require('../pic/06.png')} color={color[2]} />
+                    <Member1 name={'小张'} company={'U外包公司'} pic={require('../pic/05.png')} color={color[2]} />
                 </div>
                 <div style={{
                     display: this.state.display3,
@@ -247,7 +253,7 @@ export default class Comment extends Component {
                             </div>
                         )
                     })}
-          <Pagination current={this.state.current} pageSize={3} onChange={this.onChange} total={this.state.tasksInfo.length} />
+                    <Pagination current={this.state.current} pageSize={3} onChange={this.onChange} total={this.state.tasksInfo.length} />
                 </div>
                 <div style={{
                     display: this.state.display4,
@@ -256,6 +262,16 @@ export default class Comment extends Component {
                     justifyContent: 'flex-start',
                     alignItems: 'center',
                 }}>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'flex-end',
+                        width: this.state.width * 0.85,
+                        height: this.state.height * 0.06,
+                    }}>
+                        <Upload><img style={{marginRight:this.state.width*0.04}} src={require('../icon/plus.svg')}></img></Upload>
+                    </div>
                     <Resource />
                 </div>
             </div>

@@ -43,7 +43,7 @@ export default class Projects extends Component {
                     <Bolddivider />
                     <Notice />
                     <Bolddivider />
-                    <Comment />
+                    <Comment stars={this.state.info.stars}/>
                 </Scrollbars>
             </div>
         );

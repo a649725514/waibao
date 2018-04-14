@@ -38,6 +38,7 @@ export default class Taskcard extends Component {
             alert(message);
           })
     }
+
     back(e) {
         // e.goBack();
     }

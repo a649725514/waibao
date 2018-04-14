@@ -53,6 +53,7 @@ app.on('ready', function () {
 })
 ipc.on('camera-message', function (event, arg) {
   createCameraWindows();
+  event.sender.send('camera-message-reply', '验证通过')
 })
 var tevent;
 var jobid = new cronJob('*/30 * * * * *', () => {
@@ -61,7 +62,9 @@ var jobid = new cronJob('*/30 * * * * *', () => {
 }, null, false, 'Asia/Chongqing');
 
 ipc.on('finish_check_employee_message', (event, arg) => {
-  this.tevent.sender.send('checking_employee_finish_message', 'pong')
+  if(tevent != undefined) {
+    this.tevent.sender.send('checking_employee_finish_message', 'pong')
+  }
 })
 
 ipc.on('start_check_employee_message', (event, arg) => {

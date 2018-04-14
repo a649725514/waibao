@@ -5,7 +5,7 @@ import Member1 from './member1';
 import Task from './task';
 import Resource from './resource';
 import Selfdivider from './divider';
-import { Button, Input, Divider, Pagination,Upload } from 'antd';
+import { Button, Input, Divider, Pagination, Upload } from 'antd';
 
 const color = ['red', 'orange', 'black'];
 const { ipcRenderer } = window.electron;
@@ -36,6 +36,8 @@ export default class Comment extends Component {
             current: 1,
 
         };
+        ipcRenderer.on('camera-message-reply', function (event, arg) {
+        })
     }
 
     onChange = (page) => {
@@ -115,6 +117,9 @@ export default class Comment extends Component {
         })
     }
     press4() {
+        if (this.state.info.stars > 2) {
+            ipcRenderer.send('camera-message', 'ping')
+        }
         this.setState({
             display1: 'none',
             display2: 'none',
@@ -270,7 +275,7 @@ export default class Comment extends Component {
                         width: this.state.width * 0.85,
                         height: this.state.height * 0.06,
                     }}>
-                        <Upload><img style={{marginRight:this.state.width*0.04}} src={require('../icon/plus.svg')}></img></Upload>
+                        <Upload><img style={{ marginRight: this.state.width * 0.04 }} src={require('../icon/plus.svg')}></img></Upload>
                     </div>
                     <Resource />
                 </div>

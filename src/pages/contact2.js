@@ -78,7 +78,7 @@ class Contact2 extends Component {
         }
       }
     ).then((PromiseValue) => {
-      this.setState({ persion2: new Array(PromiseValue) });
+      this.setState({ persion2: new Array(3) });
       var url = 'http://120.78.74.75:8080/demo/s/getUserMsg?page=0&model=1'; // 接口url
       fetch(url, {
         "method": 'POST',

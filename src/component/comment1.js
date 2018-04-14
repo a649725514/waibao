@@ -226,7 +226,7 @@ export default class Comment1 extends Component {
                         borderBottomColor: '#e9e9e9',
                         borderBottomWidth: 1
                     }}>
-                        <Upload>
+                        <Upload showUploadList={false}>
                             <div style={{
                                 display: 'flex',
                                 flexDirection: 'row',

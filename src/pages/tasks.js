@@ -4,7 +4,7 @@ import Bolddivider from '../component/bolddivider';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Selfsay from '../component/selfsay';
 import Taskcard from '../component/taskcard';
-import Comment from '../component/comment1';
+import Comment1 from '../component/comment1';
 const { ipcRenderer } = window.electron;
 
 export default class Tasks extends Component {
@@ -50,7 +50,7 @@ export default class Tasks extends Component {
                     <Bolddivider />
                     <Selfsay title='任务说明' content={this.state.info.taskContent} />
                     <Bolddivider />
-                    <Comment taskId={this.state.info.id} />
+                    <Comment1 taskId={this.state.info.id} />
                 </Scrollbars>
             </div>
         );

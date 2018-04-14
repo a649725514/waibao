@@ -15,7 +15,6 @@ export default class Projects extends Component {
             info: props.match.params
 
         })
-        console.log(props.match.params)
     }
     render() {
         return (

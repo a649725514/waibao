@@ -6,7 +6,7 @@ import Topbar from '../component/topbar'
 import { Link } from "react-router-dom";
 import Projectlist from '../component/projectlist';
 const Search = Input.Search;
-const {ipcRenderer} = window.electron;
+const { ipcRenderer } = window.electron;
 class Main2 extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +15,7 @@ class Main2 extends Component {
       height: document.body.clientHeight,
       projectsInfo: [],
       current: 1,
-      token:ipcRenderer.sendSync('get_mine_token','please')
+      token: ipcRenderer.sendSync('get_mine_token', 'please')
     })
   }
   onChange = (page) => {
@@ -30,7 +30,7 @@ class Main2 extends Component {
     fetch(url, {
       "method": 'GET',
       "headers": {
-        "Authorization": "Bearer "+this.state.token,
+        "Authorization": "Bearer " + this.state.token,
         "Content-Type": "application/json",
       },
     }).then(
@@ -41,9 +41,9 @@ class Main2 extends Component {
           { this.LogError(res) }
         }
       }
-    ).then( (PromiseValue) => {
+    ).then((PromiseValue) => {
       for (var i = 0; i < PromiseValue.length; i++) {
-        this.setState({'projectsInfo': [...this.state.projectsInfo, PromiseValue[i]]})
+        this.setState({ 'projectsInfo': [...this.state.projectsInfo, PromiseValue[i]] })
       }
     });
     // this.state.projectsInfo = Array.from(new Array(20), (val, index) => index);
@@ -101,16 +101,16 @@ class Main2 extends Component {
           console.log(projectInfo)
           return (
             <div>
-            <Projectlist 
-              id={projectInfo.id}
-              projectName={projectInfo.name}
-              stars={projectInfo.sevurityLv}
-              projectId={projectInfo.id}
-              projectContent={projectInfo.projectContent}
-              projectStatus={projectInfo.projectStatus}
-              projectPublicer={projectInfo.user}
-              projectEnd={projectInfo.projectEnd}/>
-          </div>
+              <Projectlist
+                id={projectInfo.id}
+                projectName={projectInfo.name}
+                stars={projectInfo.sevurityLv}
+                projectId={projectInfo.id}
+                projectContent={projectInfo.projectContent}
+                projectStatus={projectInfo.projectStatus}
+                projectPublicer={projectInfo.user}
+                projectEnd={projectInfo.projectEnd} />
+            </div>
           )
         })}
 

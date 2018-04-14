@@ -8,7 +8,6 @@ import Message2 from './message2';
 import Main2 from './main2';
 import Contact from './contact';
 import Contact2 from './contact2';
-import Selfmessage from './selfmessage';
 import Tasks from "./tasks";
 import Projects from './projects';
 import Otherprojects from './otherprojects';
@@ -19,6 +18,7 @@ import Piechart from './piechart';
 import Error from './e404';
 import Login from './login';
 import Setting from './setting';
+import Selfmessage from './selfmessage';
 const {ipcRenderer} = window.electron;
 
 // Some folks find value in a centralized route config.

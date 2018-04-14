@@ -11,7 +11,7 @@ export default class Selfmeaasge extends Component{
         src2:null,
         email:'',
         tel:'',
-        link:null,
+        link:'',
     };
     constructor(props){
 		super(props);
